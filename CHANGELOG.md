@@ -78,8 +78,11 @@
 
 Initial version.
 
-
 [1]: https://github.com/hanwentao
 [2]: https://github.com/egorsmkv/simple-django-login-and-register/pull/27
 [3]: https://github.com/karanrajpal14
 [4]: https://github.com/egorsmkv/simple-django-login-and-register/issues/33
+
+## v1.0.1 Django Fandango on Heroku...
+
+- removed source folder

@@ -2,6 +2,9 @@ import os
 from os.path import dirname
 from django.utils.translation import ugettext_lazy as _
 
+import dj_database_url
+import django_heroku
+
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 
@@ -133,3 +136,9 @@ STATICFILES_DIRS = [
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
