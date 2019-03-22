@@ -83,6 +83,10 @@ Initial version.
 [3]: https://github.com/karanrajpal14
 [4]: https://github.com/egorsmkv/simple-django-login-and-register/issues/33
 
+
 ## v1.0.1 Django Fandango on Heroku...
 
-- removed source folder
+- removed source folder and changed 
+- chenged paths so we can have an easier fandango party
+- heroku doesn't like the file system
+- one settings file is more fun

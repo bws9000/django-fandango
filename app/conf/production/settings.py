@@ -111,6 +111,12 @@ EMAIL_ACTIVATION_AFTER_CHANGING = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
+SIGN_UP_FIELDS = ['username', 'first_name',
+                  'last_name', 'email', 'password1', 'password2']
+if DISABLE_USERNAME:
+    SIGN_UP_FIELDS = ['first_name', 'last_name',
+                      'email', 'password1', 'password2']
+
 USE_I18N = True
 USE_L10N = True
 LANGUAGE_CODE = 'en'

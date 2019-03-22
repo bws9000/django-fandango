@@ -3,6 +3,9 @@ import warnings
 from django.utils.translation import ugettext_lazy as _
 from os.path import dirname
 
+import dj_database_url
+import django_heroku
+
 warnings.simplefilter('error', DeprecationWarning)
 
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
@@ -147,3 +150,9 @@ STATICFILES_DIRS = [
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
