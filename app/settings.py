@@ -4,7 +4,15 @@ from django.utils.translation import ugettext_lazy as _
 
 import dj_database_url
 import django_heroku
-IS_PRODUCTION = (sys.argv[1] == 'runserver')
+import sys
+
+if os.environ['COMPUTERNAME'] == "DESKTOP-397L1U3":
+    PRODUCTION = False
+else:
+    PRODUCTION = True
+
+
+""" IS_PRODUCTION = (sys.argv[1] != 'runserver') """
 
 """
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
@@ -84,7 +92,10 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-if IS_PRODUCTION:
+if PRODUCTION:  
+    DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
+else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -94,6 +105,7 @@ if IS_PRODUCTION:
         'HOST': 'localhost',
         'PORT': '5432',
     }
+    
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -156,11 +168,7 @@ LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True)
 
 """
 import os
@@ -176,3 +184,6 @@ else:
     from .conf.development.settings import *
 
 """
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
