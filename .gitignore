@@ -7,7 +7,6 @@ content/media/
 content/static/
 
 notes.txt
-Procfile
 
 env/
 tmp/
