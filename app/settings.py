@@ -2,6 +2,9 @@ import os
 from os.path import dirname
 from django.utils.translation import ugettext_lazy as _
 
+import dj_database_url
+import django_heroku
+
 """
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 """
@@ -15,7 +18,7 @@ SECRET_KEY = '3d305kajG5Jy8KBafCMpHwDIsNi0SqVaW'
 
 DEBUG = True
 ALLOWED_HOSTS = [
-    'example.com',
+    'hidden-wave-51986.herokuapp.com',
     '127.0.0.1'
 ]
 
@@ -152,7 +155,11 @@ LOCALE_PATHS = [
 ]
 
 
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
 
 """
 import os
