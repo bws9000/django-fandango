@@ -87,6 +87,5 @@ Initial version.
 ## v1.0.1 Django Fandango on Heroku...
 
 - removed source folder
-- changed paths so we can have an easier fandango party
-- heroku doesn't like the file system
-- one settings file is more fun
+- changed paths
+- one settings file
