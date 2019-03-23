@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import dj_database_url
 import django_heroku
+IS_PRODUCTION = (sys.argv[1] == 'runserver')
 
 """
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
@@ -83,7 +84,8 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-DATABASES = {
+if IS_PRODUCTION:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'blackjack001',
