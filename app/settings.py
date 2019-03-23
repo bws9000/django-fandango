@@ -154,7 +154,6 @@ LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
 
-
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
