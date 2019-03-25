@@ -85,7 +85,7 @@ EMAIL_USE_SSL = True
 
 if not DEBUG:
     DATABASES['default'] = dj_database_url.config(
-        conn_max_age=600, ssl_require=True)
+        conn_max_age="600", ssl_require=True)
 else:
     DATABASES = {
         'default': {
