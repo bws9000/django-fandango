@@ -78,7 +78,7 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
-DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_USER')
 
 #SMTP_SERVER = os.environ.get('SMTP_SERVER')
 #EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
