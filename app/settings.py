@@ -14,7 +14,9 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 
 SECRET_KEY = '3d305kajG5Jy8KBafCMpHwDIsNi0SqVaW'
 
-DEBUG = (sys.argv[1] == 'runserver')
+#DEBUG = (sys.argv[1] == 'runserver')
+DEBUG = 1
+
 ALLOWED_HOSTS = [
     'hidden-wave-51986.herokuapp.com',
     '127.0.0.1'
