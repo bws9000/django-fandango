@@ -83,20 +83,21 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-if not DEBUG:  
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+if not DEBUG:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600, ssl_require=True)
 else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blackjack001',
-        'USER': 'eddy',
-        'PASSWORD': 'vanhalen',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'blackjack001',
+            'USER': 'eddy',
+            'PASSWORD': 'vanhalen',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+
     }
-    
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
