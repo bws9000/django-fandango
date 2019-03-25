@@ -70,16 +70,23 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = ''
-EMAIL_HOST_USER = ''
-DEFAULT_FROM_EMAIL = 'armorsoft@gmail.com'
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+
+#SMTP_SERVER = os.environ.get('SMTP_SERVER')
+#EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+
+#EMAIL_HOST = SMTP_SERVER
+#EMAIL_HOST_USER = ''
+#DEFAULT_FROM_EMAIL = ''
+#EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+#EMAIL_PORT = 465
+#EMAIL_USE_TLS = False
+#EMAIL_USE_SSL = True
 
 if not DEBUG:
     DATABASES = {}
