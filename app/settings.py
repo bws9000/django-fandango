@@ -6,6 +6,8 @@ import dj_database_url
 import django_heroku
 import sys
 
+DATABASES = ''
+
 BASE_DIR = os.path.abspath(os.path.join(
     os.path.dirname(__file__), os.pardir, ''))
 
@@ -156,23 +158,6 @@ STATICFILES_DIRS = [
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
-
-
-
-"""
-import os
-import sys
-
-IS_PRODUCTION = os.environ.get('IS_PRODUCTION')
-
-IS_PRODUCTION = (sys.argv[1] != 'runserver')
-
-if IS_PRODUCTION:
-    from .conf.production.settings import *
-else:
-    from .conf.development.settings import *
-
-"""
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
