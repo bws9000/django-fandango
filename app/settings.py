@@ -6,8 +6,6 @@ import dj_database_url
 import django_heroku
 import sys
 
-DATABASES = ''
-
 BASE_DIR = os.path.abspath(os.path.join(
     os.path.dirname(__file__), os.pardir, ''))
 
@@ -84,7 +82,9 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
 if not DEBUG:
-    DATABASES['default'] = dj_database_url.config()
+    DATABASES = {}
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600, ssl_require=False)
 else:
     DATABASES = {
         'default': {
