@@ -6,6 +6,10 @@ import dj_database_url
 import django_heroku
 import sys
 
+#from urllib2 import Request, urlopen
+from urllib.request import Request, urlopen
+import json
+
 BASE_DIR = os.path.abspath(os.path.join(
     os.path.dirname(__file__), os.pardir, ''))
 
@@ -74,10 +78,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-EMAIL_PORT = os.environ.get('EMAIL_PORT')
+request = Request(
+    "https://mailtrap.io/api/v1/inboxes.json?api_token=<MAILTRAP_API_TOKEN>")
+response_body = urlopen(request).read()
+credentials = json.loads(response_body)[0]
+
+EMAIL_HOST = credentials['domain']
+EMAIL_HOST_USER = credentials['username']
+EMAIL_HOST_PASSWORD = credentials['password']
+EMAIL_PORT = credentials['smtp_ports'][0]
+EMAIL_USE_TLS = True
+
+#EMAIL_HOST = os.environ.get('EMAIL_HOST')
+#EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+#EMAIL_PORT = os.environ.get('EMAIL_PORT')
 
 #SMTP_SERVER = os.environ.get('SMTP_SERVER')
 #EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
