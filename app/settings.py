@@ -84,7 +84,7 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
 if not DEBUG:
-    DATABASES['default'] = dj_database_url.config(ssl_require=False)
+    DATABASES['default'] = dj_database_url.config()
 else:
     DATABASES = {
         'default': {
