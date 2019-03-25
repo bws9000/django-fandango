@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 request = Request(
-    "https://mailtrap.io/api/v1/inboxes.json?api_token=<MAILTRAP_API_TOKEN>")
+    "https://mailtrap.io/api/v1/inboxes.json?api_token=" + os.environ.get('MAILTRAP_API_TOKEN'))
 response_body = urlopen(request).read()
 credentials = json.loads(response_body)[0]
 
