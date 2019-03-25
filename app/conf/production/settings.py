@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Vendor apps
     'bootstrap4',
@@ -75,6 +76,10 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
+EMAIL_HOST_USER = 'test@example.com'
+DEFAULT_FROM_EMAIL = 'test@example.com'
 
 DATABASES = {
     'default': {

@@ -6,17 +6,6 @@ import dj_database_url
 import django_heroku
 import sys
 
-if os.environ['COMPUTERNAME'] == "DESKTOP-397L1U3":
-    PRODUCTION = False
-else:
-    PRODUCTION = True
-
-
-""" IS_PRODUCTION = (sys.argv[1] != 'runserver') """
-
-"""
-BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
-"""
 BASE_DIR = os.path.abspath(os.path.join(
     os.path.dirname(__file__), os.pardir, ''))
 
@@ -25,7 +14,7 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 
 SECRET_KEY = '3d305kajG5Jy8KBafCMpHwDIsNi0SqVaW'
 
-DEBUG = True
+DEBUG = (sys.argv[1] == 'runserver')
 ALLOWED_HOSTS = [
     'hidden-wave-51986.herokuapp.com',
     '127.0.0.1'
@@ -86,13 +75,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
-DEFAULT_FROM_EMAIL = ''
+DEFAULT_FROM_EMAIL = 'armorsoft@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-if PRODUCTION:  
+if not DEBUG:  
     DATABASES['default'] = dj_database_url.config(
     conn_max_age=600, ssl_require=True)
 else:
@@ -134,13 +123,13 @@ USE_REMEMBER_ME = False
 RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME = True
 EMAIL_ACTIVATION_AFTER_CHANGING = True
 
-MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
-
 SIGN_UP_FIELDS = ['username', 'first_name',
                   'last_name', 'email', 'password1', 'password2']
 if DISABLE_USERNAME:
     SIGN_UP_FIELDS = ['first_name', 'last_name',
                       'email', 'password1', 'password2']
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 USE_I18N = True
 USE_L10N = True
