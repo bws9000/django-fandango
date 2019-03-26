@@ -1,3 +1,11 @@
+## v2.13.001 Django Fandango on Heroku...
+
+- removed source folder
+- changed paths
+- one settings file
+- deployed to heroku
+
+
 # Change log
 
 ## v2.13
@@ -84,9 +92,4 @@ Initial version.
 [4]: https://github.com/egorsmkv/simple-django-login-and-register/issues/33
 
 
-## v1.0.1 Django Fandango on Heroku...
 
-- removed source folder
-- changed paths
-- one settings file
-- 
